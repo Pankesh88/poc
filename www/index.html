@@ -1,45 +1,68 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+<!doctype html>
+<html ng-app="ui.bootstrap.demo">
+<head>
+<meta charset="utf-8">
+<title>login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/common.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#myModal').on('show.bs.modal', function(e) {
+      var phone = $("#mobile_number").val();
+      $(e.currentTarget).find('input[name="mobile"]').val(phone);
+    });
+  });
+</script>
+</head>
+<body background="images/background.png">
+     <div class="login_deta">
+		   <div class="logo_login">
+		     <img class="img-responsive" src="images/logo.png">
+		   </div>
+		   <div class="form_field">
+			   <form>
+			      <div class="form-group">
+			        <span><img class="img-responsive" src="images/mobile.png"></span>
+			   	    <input type="text" class="form-control" id="mobile_number" name="mobile_number" placeholder="Mobile Number">
+			   	 </div>
+			   	    <div class="form-group">
+			   	    <span><img class="img-responsive" src="images/password.png"></span>
+			   	     <input type="password" class="form-control"  name="password" placeholder="password">
+			   	  </div>
+			   </form>
+		   <a class="forgot">Forgot Password ?</a>
+		   <button class="login" id="mybutton"  data-toggle="modal" data-id="" data-target="#myModal">Login</button>
+		   </div>
+	</div>
 
-    <link rel="manifest" href="manifest.json">
+	   <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
 
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
-
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter">
-
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
-      </ion-header-bar>
-      <ion-content>
-      </ion-content>
-    </ion-pane>
-  </body>
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        </div>
+	        <div class="modal-body">
+	        <div class="form_field">
+	         <form id="otp-form" action="dashboard.html" method="get">
+				   <div class="form-group">
+             <input type="hidden" class="form-control"  id="mobile" name="mobile">
+					   <span class="otp"><img class="img-responsive" src="images/otp.png"></span>
+					   <input type="text" class="form-control"  id="otp" name="otp" placeholder="OTP">
+             <button class="login" name="submit-otp" id="submit-otp">Verify</button>
+				   	</div>
+				  </form>
+		       </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+</body>
+<script src="js/bootstrap.js"></script>
 </html>

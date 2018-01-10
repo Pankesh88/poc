@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>my offers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery-3.2.1.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/circle-progress.min.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    // A $( document ).ready() block.
+    $( document ).ready(function() {
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+          sURLVariables = sPageURL.split('&'),
+          sParameterName,
+          i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+
+          if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+          }
+        }
+      };
+      $("#test").html(getUrlParameter('mobile'));
+    });
+  </script>
+</head>
+<body class="body_all">
+<div class="content">
+  <div class="header">
+    <div class="col-sm-12">
+      <div class="col-sm-2 col-xs-2 p-0">
+        <div class="home_icon">
+          <a href="dashboard.html">
+            <img class="img-responsive" src="images/home.png">
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-8 col-xs-8 hedding p-0 text-centrer">
+        <p>My Offers</p>
+        <span id="test"></span>
+      </div>
+      <div class="col-sm-2 col-xs-2 p-0">
+        <div class="more_icon">
+          <a href="index.html">
+            <img class="img-responsive" src="images/more.png">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body_content text-centrer">
+    <div class="circle" id="circle-a">
+      <strong></strong>
+      <div class="back_img">
+        <img class="img-responsive" src="images/back_bar.png">
+      </div>
+      <div class="content_canvas">
+        <span class="small_head">Data Balance</span>
+        <p>9.4<span class="gb">GB</span></p>
+        <span class="small_head">of 30.6 GB is left</span>
+      </div>
+    </div>
+    <div class="voice_sas_data_icons">
+      <ul>
+        <li><img class="img-responsive" src="images/landline.png"></li>
+        <li><img class="img-responsive" src="images/msg.png"></li>
+        <li><img class="img-responsive" src="images/data.png"></li>
+      </ul>
+    </div>
+    <div class="voice_and_sms">
+      <div class="col-sm-6 col-xs-6  text-left">
+        <div class="voice">
+          <div class="top_head">
+            <span>Voice</span>
+            <p>350<span>mins</span></p>
+          </div>
+        </div>
+        <div class="circle01" id="circle-b">
+          <strong></strong>
+          <div class="content_canvas01">
+            <p>150<span class="gb">min</span></p>
+            <span class="small_head">of 500 is left</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-6  text-right">
+        <div class="voice">
+          <div class="top_head">
+            <span>SMS</span>
+            <p>57<span>SMS</span></p>
+          </div>
+        </div>
+        <div class="circle01" id="circle-c">
+          <strong></strong>
+          <div class="content_canvas01">
+            <p>33<span class="gb">SMS</span></p>
+            <span class="small_head">of 100 is left</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="clear"></div>
+<div class="footer">
+  <div class="col-sm-12">
+    <div class="col-sm-4 col-xs-4 p-5">
+      <div class="footer_menu  offer">
+        <a href="my_offers.html">
+        <div class="img_foot">
+          <img class="img-responsive" src="images/offer.png">
+        </div>
+        <p>My Offers</p>
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-4 col-xs-4 p-5">
+      <div class="footer_menu  make_plan">
+        <a href="make_plan.html">
+        <div class="img_foot">
+          <img class="img-responsive" src="images/make_plan.png">
+        </div>
+        <p>Make my plan</p>
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-4 col-xs-4 p-5">
+      <div class="footer_menu  share_plan">
+        <div class="img_foot">
+          <img class="img-responsive" src="images/share_plan.png">
+        </div>
+        <p>Dashboard</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var progressBarOptions = {
+    startAngle: 1.55,
+    size: 200,
+    value: 0.75,
+    fill: {
+      gradient: ["#e9b078", "#e2757f", "#875eb1"]
+    }
+  }
+  var progressBarOptions01 = {
+    startAngle: 1.55,
+    size: 100,
+    value: 0.75,
+    fill: {
+      gradient: ["#e9b078", "#e2757f", "#875eb1"]
+    }
+  }
+
+  $('.circle').circleProgress(progressBarOptions).on('circle-animation-progress', function(event, progress, stepValue) {
+    //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
+  });
+  $('.circle01').circleProgress(progressBarOptions01).on('circle-animation-progress', function(event, progress, stepValue) {
+    //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
+  });
+
+  $('#circle-b').circleProgress({
+    value : 0.85,
+    fill: {
+      gradient: ["#1b8386", "#5ec3c0"]
+    }
+  });
+
+  $('#circle-c').circleProgress({
+    value : 0.92,
+    fill: {
+      gradient: ["#cb4261", "#f190a8"]
+    }
+  });
+</script>
+</body>
+</html>
