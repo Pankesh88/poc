@@ -2,6 +2,12 @@
   "name": "poc",
   "app_id": "fe4ac9e7",
   "type": "ionic1",
+  "proxies": [
+    {
+      "path": "/fdpBusiness",
+      "proxyUrl": "http://localhost:3000/fdpBusiness"
+    }
+  ],
   "integrations": {
     "gulp": {},
     "cordova": {}

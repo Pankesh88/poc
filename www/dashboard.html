@@ -6,13 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/lodash.js"></script>
   <script src="js/jquery-3.2.1.js"></script>
+  <script src="js/parse.js"></script>
   <script src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/circle-progress.min.js"></script>
   <script src="js/common.js"></script>
   <script>
     // A $( document ).ready() block.
     $( document ).ready(function() {
+
+      var url = "/fdpBusiness/fdpservice/fulfillmentService";
+
       var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
           sURLVariables = sPageURL.split('&'),
@@ -28,6 +33,36 @@
         }
       };
       $("#test").html(getUrlParameter('mobile'));
+
+      $.ajax(url, {
+        success: function(data) {
+          var obj = parse(data);
+          console.log("This is a test");
+          console.log(obj);
+
+          var dataBalance = obj.responseData.getCommandResponse[6].value[3].value;
+          var mainBalance = obj.responseData.getCommandResponse[2].value;
+          console.log(dataBalance);
+          console.log(mainBalance);
+
+          var dataBalanceMB = dataBalance / 1024;
+          var mainBalanceMB = mainBalance / 100;
+          var dataRemaininginMB = 10240 - dataBalanceMB;
+          var dataRemaininginGB = (10 - (dataBalanceMB / 1024)).toFixed(1);
+
+          $("#dataBalance").html(dataRemaininginGB);
+
+          console.log(dataBalanceMB);
+          console.log(mainBalanceMB);
+          console.log(dataRemaininginMB);
+          console.log(dataRemaininginGB);
+
+        },
+        error: function() {
+          console.log("error");
+        }
+      });
+
     });
   </script>
 </head>
@@ -63,8 +98,8 @@
       </div>
       <div class="content_canvas">
         <span class="small_head">Data Balance</span>
-        <p>9.4<span class="gb">GB</span></p>
-        <span class="small_head">of 30.6 GB is left</span>
+        <p><span id="dataBalance"></span><span class="gb">GB</span></p>
+        <span class="small_head">of 10 GB is left</span>
       </div>
     </div>
     <div class="voice_sas_data_icons">
@@ -147,7 +182,7 @@
   var progressBarOptions = {
     startAngle: 1.55,
     size: 200,
-    value: 0.75,
+    value: 0.50,
     fill: {
       gradient: ["#e9b078", "#e2757f", "#875eb1"]
     }
