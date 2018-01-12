@@ -32,7 +32,7 @@
           }
         }
       };
-      $("#test").html(getUrlParameter('mobile'));
+      $("#phoneNumberID").html(getUrlParameter('mobile'));
 
       $.ajax(url, {
         success: function(data) {
@@ -49,13 +49,55 @@
           var mainBalanceMB = mainBalance / 100;
           var dataRemaininginMB = 10240 - dataBalanceMB;
           var dataRemaininginGB = (10 - (dataBalanceMB / 1024)).toFixed(1);
+          var percentDataRemainingInGB = ((10 - (dataBalanceMB / 1024)) * 0.1).toFixed(2);
 
           $("#dataBalance").html(dataRemaininginGB);
+          $("#test").html("Rs."  + mainBalanceMB);
 
           console.log(dataBalanceMB);
           console.log(mainBalanceMB);
           console.log(dataRemaininginMB);
           console.log(dataRemaininginGB);
+          console.log(percentDataRemainingInGB);
+
+          var progressBarOptions = {
+            startAngle: 1.55,
+            size: 200,
+            value: percentDataRemainingInGB,
+            fill: {
+              gradient: ["#e9b078", "#e2757f", "#875eb1"]
+            }
+          }
+          var progressBarOptions01 = {
+            startAngle: 1.55,
+            size: 100,
+            value: 0.75,
+            fill: {
+              gradient: ["#e9b078", "#e2757f", "#875eb1"]
+            }
+          }
+
+          $('.circle').circleProgress(progressBarOptions).on('circle-animation-progress', function(event, progress, stepValue) {
+            //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
+          });
+          $('.circle01').circleProgress(progressBarOptions01).on('circle-animation-progress', function(event, progress, stepValue) {
+            //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
+          });
+
+          $('#circle-b').circleProgress({
+            value : 0.85,
+            fill: {
+              gradient: ["#1b8386", "#5ec3c0"]
+            }
+          });
+
+          $('#circle-c').circleProgress({
+            value : 0.92,
+            fill: {
+              gradient: ["#cb4261", "#f190a8"]
+            }
+          });
+
 
         },
         error: function() {
@@ -78,7 +120,7 @@
         </div>
       </div>
       <div class="col-sm-8 col-xs-8 hedding p-0 text-centrer">
-        <p>My Offers</p>
+        <p id="phoneNumberID"></p>
         <span id="test"></span>
       </div>
       <div class="col-sm-2 col-xs-2 p-0">
@@ -179,43 +221,6 @@
 </div>
 
 <script type="text/javascript">
-  var progressBarOptions = {
-    startAngle: 1.55,
-    size: 200,
-    value: 0.50,
-    fill: {
-      gradient: ["#e9b078", "#e2757f", "#875eb1"]
-    }
-  }
-  var progressBarOptions01 = {
-    startAngle: 1.55,
-    size: 100,
-    value: 0.75,
-    fill: {
-      gradient: ["#e9b078", "#e2757f", "#875eb1"]
-    }
-  }
-
-  $('.circle').circleProgress(progressBarOptions).on('circle-animation-progress', function(event, progress, stepValue) {
-    //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
-  });
-  $('.circle01').circleProgress(progressBarOptions01).on('circle-animation-progress', function(event, progress, stepValue) {
-    //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
-  });
-
-  $('#circle-b').circleProgress({
-    value : 0.85,
-    fill: {
-      gradient: ["#1b8386", "#5ec3c0"]
-    }
-  });
-
-  $('#circle-c').circleProgress({
-    value : 0.92,
-    fill: {
-      gradient: ["#cb4261", "#f190a8"]
-    }
-  });
 </script>
 </body>
 </html>
