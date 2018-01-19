@@ -12,7 +12,7 @@
 	 background: linear-gradient(#f2f2f2, #fff) no-repeat;
 	  font-family: CenturyGothicStd, "Century Gothic", CenturyGothic, AppleGothic, "Glyphicons Halflings", sans-serif;
 }
-html, 
+html,
 body {
     height: 100%;
     font-family: CenturyGothicStd, "Century Gothic", CenturyGothic, AppleGothic, "Glyphicons Halflings", sans-serif;
@@ -111,7 +111,7 @@ body {
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px;
+  /*left: -9999px;*/
 }
 [type="checkbox"]:not(:checked) + label, [type="checkbox"]:checked + label {
     position: relative;
@@ -220,6 +220,7 @@ label:hover:before {
 	clear: both;
 }
 .confirm_button{
+  margin-top: 5px;
 	text-align: center;
 }
 .confirm {
@@ -241,13 +242,28 @@ label:hover:before {
     letter-spacing: 3px;
 }
 .footer {
-    overflow: hidden;
-    margin: 30px 0;
+  bottom: 0px;
+  position: fixed;
+  width: 100%;
+  /*margin: 30px 0;*/
+}
+.my_offer {
+  overflow: hidden;
+  margin: 30px 0;
 }
 .footer_menu{
 	background-color: #e9e9e9;
 	text-align: center;
 	border-radius: 8px;
+  min-height: 125px;
+}
+
+.my_offer_menu{
+  background-color: #e9e9e9;
+  text-align: center;
+  border-radius: 8px;
+  min-height: 50px;
+  padding-top: 14px;
 }
 
 .footer_menu p{
@@ -268,7 +284,7 @@ label:hover:before {
 .offer{
 	border-bottom: 2px solid #f76b8b;
 }
-.footer_menu.active{
+.footer_menu.active, .my_offer_menu.active{
 	background-color: #002B5E;
 	opacity: 0.8;
 	color: #fff !important;
@@ -579,7 +595,7 @@ body {
 
 .container {
   margin: 40px auto 0;
-  max-width: 120px;
+  /*max-width: 120px;*/
 }
 
 .by {
@@ -611,3 +627,19 @@ a:hover {
 	background-color: #002B5E;
 }
 /*dropdown end*/
+
+.checkbox:last-child {
+  margin-left: -5px;
+}
+
+.my-offer-list-view {
+  background-color: #002B5E; /*#1C0746;*/
+  color: white;
+  height: 45px;
+  margin-top:  1px;
+  padding: 2px;
+  cursor: pointer;
+  max-width: 100%;
+  margin-left: 0px;
+  clear: both;
+}

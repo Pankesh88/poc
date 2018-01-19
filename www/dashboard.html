@@ -13,10 +13,11 @@
   <script type="text/javascript" src="js/circle-progress.min.js"></script>
   <script src="js/common.js"></script>
   <script>
+
     // A $( document ).ready() block.
     $( document ).ready(function() {
 
-      var url = "/fdpBusiness/fdpservice/fulfillmentService";
+      var url = apiGBADUrl;
 
       var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -33,75 +34,87 @@
         }
       };
       $("#phoneNumberID").html(getUrlParameter('mobile'));
+      console.log(url);
+      function resultFunction(data) {
+        // console.log(data);
+        var obj = parse(data);
+        if(!obj) {
+          data = data.substring(data.indexOf('<fulfillmentService>'));
+          var parser1 = new DOMParser();
+          var xmlDoc = parser1.parseFromString(data, 'text/xml');
+          obj = parse(xmlDoc);
+        }
+        console.log("This is a test");
+        console.log(obj);
 
+        var dataBalance = obj.responseData.getCommandResponse.methodResponse[6].value[8][3].value;
+
+        console.log(dataBalance);
+        var mainBalance = obj.responseData.getCommandResponse.methodResponse[2].value;
+
+        console.log(mainBalance);
+
+        dataBalanceMB = dataBalance / 1024;
+        mainBalanceMB = mainBalance / 100;
+        dataRemaininginMB = dataBalanceMB;
+        dataRemaininginGB = ((dataBalanceMB / 1024)).toFixed(1);
+        percentDataRemainingInGB = (((dataBalanceMB / 1024)) * 0.1).toFixed(2);
+
+        $("#dataBalance").html(dataRemaininginGB);
+        $("#test").html("Rs."  + mainBalanceMB);
+
+        console.log(dataBalanceMB, ' == ', (10 - (dataBalanceMB / 1024)).toFixed(1));
+        console.log(mainBalanceMB);
+        console.log(dataRemaininginMB);
+        console.log(dataRemaininginGB);
+        console.log(percentDataRemainingInGB);
+
+        var progressBarOptions = {
+          startAngle: 1.55,
+          size: 200,
+          value: percentDataRemainingInGB,
+          fill: {
+            gradient: ["#e9b078", "#e2757f", "#875eb1"]
+          }
+        }
+        var progressBarOptions01 = {
+          startAngle: 1.55,
+          size: 100,
+          value: 0.75,
+          fill: {
+            gradient: ["#e9b078", "#e2757f", "#875eb1"]
+          }
+        }
+
+        $('.circle').circleProgress(progressBarOptions).on('circle-animation-progress', function(event, progress, stepValue) {
+          //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
+        });
+        $('.circle01').circleProgress(progressBarOptions01).on('circle-animation-progress', function(event, progress, stepValue) {
+          //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
+        });
+
+        $('#circle-b').circleProgress({
+          value : 0.85,
+          fill: {
+            gradient: ["#1b8386", "#5ec3c0"]
+          }
+        });
+
+        $('#circle-c').circleProgress({
+          value : 0.92,
+          fill: {
+            gradient: ["#cb4261", "#f190a8"]
+          }
+        });
+
+
+      };
       $.ajax(url, {
-        success: function(data) {
-          var obj = parse(data);
-          console.log("This is a test");
-          console.log(obj);
-
-          var dataBalance = obj.responseData.getCommandResponse[6].value[3].value;
-          var mainBalance = obj.responseData.getCommandResponse[2].value;
-          console.log(dataBalance);
-          console.log(mainBalance);
-
-          var dataBalanceMB = dataBalance / 1024;
-          var mainBalanceMB = mainBalance / 100;
-          var dataRemaininginMB = 10240 - dataBalanceMB;
-          var dataRemaininginGB = (10 - (dataBalanceMB / 1024)).toFixed(1);
-          var percentDataRemainingInGB = ((10 - (dataBalanceMB / 1024)) * 0.1).toFixed(2);
-
-          $("#dataBalance").html(dataRemaininginGB);
-          $("#test").html("Rs."  + mainBalanceMB);
-
-          console.log(dataBalanceMB);
-          console.log(mainBalanceMB);
-          console.log(dataRemaininginMB);
-          console.log(dataRemaininginGB);
-          console.log(percentDataRemainingInGB);
-
-          var progressBarOptions = {
-            startAngle: 1.55,
-            size: 200,
-            value: percentDataRemainingInGB,
-            fill: {
-              gradient: ["#e9b078", "#e2757f", "#875eb1"]
-            }
+        success: resultFunction,
+        error: function(xhr, status, error) {
+          if(xhr.status === 200) {
+            resultFunction(xhr.responseText);
           }
-          var progressBarOptions01 = {
-            startAngle: 1.55,
-            size: 100,
-            value: 0.75,
-            fill: {
-              gradient: ["#e9b078", "#e2757f", "#875eb1"]
-            }
-          }
-
-          $('.circle').circleProgress(progressBarOptions).on('circle-animation-progress', function(event, progress, stepValue) {
-            //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
-          });
-          $('.circle01').circleProgress(progressBarOptions01).on('circle-animation-progress', function(event, progress, stepValue) {
-            //$(this).find('strong').text(String(stepValue.toFixed(2)).substr(1));
-          });
-
-          $('#circle-b').circleProgress({
-            value : 0.85,
-            fill: {
-              gradient: ["#1b8386", "#5ec3c0"]
-            }
-          });
-
-          $('#circle-c').circleProgress({
-            value : 0.92,
-            fill: {
-              gradient: ["#cb4261", "#f190a8"]
-            }
-          });
-
-
-        },
-        error: function() {
-          console.log("error");
         }
       });
 
@@ -121,7 +134,7 @@
       </div>
       <div class="col-sm-8 col-xs-8 hedding p-0 text-centrer">
         <p id="phoneNumberID"></p>
-        <span id="test"></span>
+        <span id="test" style="font-weight: bold; color: black;"></span>
       </div>
       <div class="col-sm-2 col-xs-2 p-0">
         <div class="more_icon">
@@ -132,7 +145,7 @@
       </div>
     </div>
   </div>
-  <div class="body_content text-centrer">
+  <div class="body_content text-centrer container">
     <div class="circle" id="circle-a">
       <strong></strong>
       <div class="back_img">

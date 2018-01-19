@@ -5,7 +5,7 @@
   "proxies": [
     {
       "path": "/fdpBusiness",
-      "proxyUrl": "http://localhost:3000/fdpBusiness"
+      "proxyUrl": "http://bfa9551d.ngrok.io/fdpBusiness"
     }
   ],
   "integrations": {

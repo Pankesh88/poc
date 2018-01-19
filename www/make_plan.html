@@ -2,7 +2,7 @@
 <html ng-app="ui.bootstrap.demo">
 <head>
 <meta charset="utf-8">
-<title>my offers</title>
+<title>Make my Plan</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap-slider.css">
@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="body_all">
-     <div class="content">
+  <div class="content">
 		   <div class="header">
 		     <div class="col-sm-12">
 		     <div class="col-sm-2 col-xs-2 p-0">
@@ -21,7 +21,7 @@
 		      </div>
 		     </div>
 		     <div class="col-sm-8 col-xs-8 hedding p-0 text-centrer">
-		      <p>My Offers</p>
+		      <p>Make my Plan</p>
 		     </div>
 		     <div class="col-sm-2 col-xs-2 p-0">
 		     <div class="more_icon">
@@ -32,85 +32,224 @@
 		     </div>
 		     </div>
 		   </div>
-		   <div class="body_content text-centrer">
+		   <div class="body_content text-centrer" style="max-width: 100vw;">
 		      <div class="range_slid">
-		       <div class="col-sm-12">
-		       <div class="days">
-		       <select class="">
-				    <option value="" data-display-text="Select Days">Select Days</option>
-				    <option value="apples">30 Days</option>
-				    <option value="bananas">60 Days</option>
-				    <option value="oranges">90 Days</option>
-				  </select>
-		       </div>
-		       <div class="clear"></div>
-		         <div class="data_range range">
-		          <p>Data</p>
-		           <input id="ex13" type="text" data-slider-ticks="[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"]'/>
-		        </div>
-		        <div class="voice_range range">
-		          <p>Voice</p>
-		           <input id="ex14" type="text" data-slider-ticks="[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"]'/>
-		        </div>
-		        <div class="sms_range range">
-		          <p>SMS</p>
-		           <input id="ex15" type="text" data-slider-ticks="[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"]'/>
-		        </div>
-		        </div>
-		       </div>
+            <div class="col-sm-12">
+		          <div class="days">
+                <select class="" id="price-filter">
+                  <option value="" data-display-text="MRP">MRP</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                  <option value="500">500</option>
+                </select>
+              </div>
+		          <div class="clear"></div>
+              <div class="data_range range">
+                <p>Data</p>
+                <input id="data-slider" type="text"/>
+              </div>
+		          <div class="voice_range range">
+		            <p>Voice</p>
+		            <input id="voice-slider" type="text"/>
+		          </div>
+		          <div class="sms_range range">
+		            <p>SMS</p>
+		            <input id="sms-slider" type="text"/>
+		          </div>
+            </div>
+          </div>
 		   </div>
 		   <div class="clear"></div>
 		   <div class="clear"></div>
 		     <div class="confirm_button">
-		       <button class="confirm">Submit</button>
+		       <button class="confirm" id="submit-button">Submit</button>
 		     </div>
-		   <div class="footer">
-		     <div class="col-sm-12">
-		       <div class="col-sm-4 col-xs-4 p-5">
-		         <div class="footer_menu  offer">
-               <a href="my_offers.html">
-                 <div class="img_foot">
-                    <img class="img-responsive" src="images/offer.png">
-                  </div>
-                    <p>My Offers</p>
-                 </div>
-                </a>
-		       </div>
-		       <div class="col-sm-4 col-xs-4 p-5">
-		         <div class="footer_menu active  make_plan">
-		         <div class="img_foot">
-		            <img class="img-responsive" src="images/make_plan.png">
-		          </div>
-		            <p>Make my Plan</p>
-		         </div>
-		       </div>
-		       <div class="col-sm-4 col-xs-4 p-5">
-		         <div class="footer_menu  share_plan">
-               <a href="dashboard.html">
-                 <div class="img_foot">
-                    <img class="img-responsive" src="images/share_plan.png">
-                  </div>
-                    <p>Dashboard</p>
-                 </div>
-               </a>
-		       </div>
-		     </div>
-		   </div>
-	</div>
+   <div class="footer">
+     <div class="col-sm-12">
+       <div class="col-sm-4 col-xs-4 p-5">
+         <div class="footer_menu  offer">
+           <a href="my_offers.html">
+             <div class="img_foot">
+               <img class="img-responsive" src="images/offer.png">
+             </div>
+             <p>My Offers</p>
+           </a>
+         </div>
+       </div>
+       <div class="col-sm-4 col-xs-4 p-5">
+         <div class="footer_menu active make_plan">
+           <a href="make_plan.html">
+             <div class="img_foot">
+               <img class="img-responsive" src="images/make_plan.png">
+             </div>
+             <p>Make my plan</p>
+           </a>
+         </div>
+       </div>
+       <div class="col-sm-4 col-xs-4 p-5">
+         <div class="footer_menu  share_plan">
+           <a href="dashboard.html">
+             <div class="img_foot">
+               <img class="img-responsive" src="images/share_plan.png">
+             </div>
+             <p>Dashboard</p>
+           </a>
+         </div>
+       </div>
+     </div>
+   </div>
+  </div>
 
-
-
-<script src="js/bootstrap.js"></script>
+<script src="js/lodash.js"></script>
 <script src="js/jquery-3.2.1.js"></script>
-<script src="js/bootstrap-slider.js"></script>
+<script src="js/parse.js"></script>
+<script src="js/bootstrap.js"></script>
 <script src="js/bootstrap-slider.min.js"></script>
 <script src="js/common.js"></script>
 <script type="text/javascript">
-$("#ex13").slider({
-    ticks: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-    ticks_labels: ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"],
-    ticks_snap_bounds: 30
+  console.log('mainBalanceMB = ', mainBalanceMB);
+
+var apiResponseData = {};
+function sliderDataFunction(url, typeId) {
+  $.get(url).done(function(data) {
+    var obj = parse(data);
+
+    if(!obj) {
+      data = data.substring(data.indexOf('<fulfillmentService>'));
+      var parser1 = new DOMParser();
+      var xmlDoc = parser1.parseFromString(data, 'text/xml');
+      obj = parse(xmlDoc);
+    }
+    apiResponseData[typeId] = obj;
+    var ticks = [];
+    var ticks_labels = [];
+    if(obj['PLAN'] && obj['PLAN'].length) {
+      obj['PLAN'].map(function (e) {
+        e.AMOUNT = Math.abs(parseInt(e.AMOUNT) / 100);
+        ticks.push(e.AMOUNT);
+        ticks_labels.push(e.DESCRIPTION);
+      });
+    } else if(obj['PLAN']) {
+      obj['PLAN']['AMOUNT'] = Math.abs(parseInt(obj['PLAN']['AMOUNT']) / 100);
+      ticks.push(obj['PLAN']['AMOUNT']);
+      ticks_labels.push(obj['PLAN']['DESCRIPTION']);
+    }
+
+    ticks.sort(function (a, b) {
+      return a - b;
+    });
+    var ticks_positions = ticks.map(function (e) {
+      return (e*100)/ticks[ticks.length-1];
+    });
+    ticks_positions.unshift(0);
+    ticks.unshift(0);
+    console.log(ticks_positions);
+    sliderObj = {
+      value: 0,
+      step: 0.01,
+      ticks: ticks,
+      ticks_labels: ticks,
+      ticks_positions: ticks_positions,
+      ticks_snap_bounds: 200,
+      formatter: function(value) {
+        return 'INR ' + value;
+      },
+      ticks_tooltip: true
+    };
+    $("#" + typeId).slider(sliderObj);
+    console.log( "second success", obj );
+    $('#range').show();
+  }).fail(function(err) {
+    console.log( "error", err );
+  });
+}
+
+function postData(url, data) {
+  $.ajax({
+    type: "GET",
+    url: url,
+    dataType: "xml",
+    contentType: "application/xml",
+    data: data,
+    success: function (res) {
+      console.log('post res ', res);
+    },
+    error: function (res) {
+      console.error('post res ', res);
+    }
+  });
+}
+
+  //$('#range').hide();
+  var sliderObj;
+
+
+  //http://147.128.240.232:8180
+var url = apiUrl + '*63161*2%23' ;//'/fdpBusiness/fdpservice/fulfillmentService?transaction_id=0&action=NETXCELL_SERVICE&password=fulfillmentService@123&iname=IVR&input=*63161*2%23&circleCode=KK&MSISDN=9818549505&username=fulfillmentService';
+sliderDataFunction(url, 'data-slider');
+url = apiUrl + '*222*1*2%23';//'*129*47*2*2%23'; //'/fdpBusiness/fdpservice/fulfillmentService?transaction_id=0&action=NETXCELL_SERVICE&password=fulfillmentService@123&iname=IVR&input=*129*47*2*2%23&circleCode=KK&MSISDN=9818549505&username=fulfillmentService';
+sliderDataFunction(url, 'voice-slider');
+url = apiUrl + '*555*1%23'; //'/fdpBusiness/fdpservice/fulfillmentService?transaction_id=0&action=NETXCELL_SERVICE&password=fulfillmentService@123&iname=IVR&input=*129*47*3%23&circleCode=KK&MSISDN=9818549505&username=fulfillmentService';
+sliderDataFunction(url, 'sms-slider');
+
+$('#price-filter').on('change', function () {
+  console.log($(this).val());
+  console.log($('#voice-slider').val());
+  console.log($('#data-slider').val());
 });
+
+$('#submit-button').on('click', function () {
+  var submitAPIUrl = buyProductApi;//'/fdpBusiness/fdpservice/fulfillmentService?MSISDN=9816732130&circlecode=HP&username=fulfillmentService&password=fulfillmentService@123&input=';
+
+  var selctedDataSlider = $('#data-slider').val();
+  var dataSlider = apiResponseData['data-slider'];
+  var selctedDataSliderObj = dataSlider.PLAN.find(function (e) {
+    return e.AMOUNT ==  selctedDataSlider;
+  });
+  if(selctedDataSliderObj) {
+    postData(submitAPIUrl + selctedDataSliderObj.ID, '');
+  }
+
+  // voice submission
+  var selctedVoiceSlider = $('#voice-slider').val();
+  var voiceSlider = apiResponseData['voice-slider'];
+  var selctedVoiceSliderObj;
+  if(voiceSlider.PLAN.length>0) {
+    selctedVoiceSliderObj = voiceSlider.PLAN.find(function (e) {
+      return e.AMOUNT == selctedVoiceSlider;
+    });
+  } else if(voiceSlider.PLAN.AMOUNT) {
+    selctedVoiceSliderObj = voiceSlider.PLAN;
+  }
+  if(selctedVoiceSliderObj) {
+    postData(submitAPIUrl + selctedVoiceSliderObj.ID, '');
+  }
+
+  // sms submission
+  var selctedSMSSlider = $('#sms-slider').val();
+  var smsSlider = apiResponseData['sms-slider'];
+
+
+  var selctedSMSSliderObj = null;
+  if(smsSlider.PLAN && smsSlider.PLAN.length>0) {
+    selctedSMSSliderObj = voiceSlider.PLAN.find(function (e) {
+      return e.AMOUNT ==  selctedSMSSlider;
+    });
+  } else if(smsSlider.PLAN && smsSlider.PLAN.AMOUNT) {
+    selctedSMSSliderObj = smsSlider.PLAN;
+  }
+
+  if(selctedSMSSliderObj) {
+    postData(submitAPIUrl + selctedSMSSliderObj.ID, '');
+  }
+});
+
+
+
+/*$("#data-slider").on('change', function (e) {
+  console.log(e);
+});*/
+
 $("#ex14").slider({
     ticks: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
     ticks_labels: ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"],
